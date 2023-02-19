@@ -10,7 +10,16 @@
       </a>
     </div>
     <div @click="homeclick">网站首页</div>
-    <div @click="aboutclick">成功案例</div>
+    <div class="success" @click="aboutclick">
+      <div class="top">成功案例</div>
+      <div class="bottom">
+        <div class="bottom-content">
+          <div>成功案例1</div>
+          <div>成功案例2</div>
+          <div>成功案例3</div>
+        </div>
+      </div>
+    </div>
     <div>关于我们</div>
     <div>品牌智库</div>
     <div>服务项目</div>
@@ -58,7 +67,8 @@ export default {
       this.$router.replace("/");
     },
     aboutclick() {
-      this.$router.replace("/about");
+      // this.$router.replace("/about");
+      console.log(1);
     },
   },
 };
@@ -77,7 +87,41 @@ export default {
   padding: 0 50px;
   box-sizing: border-box;
   transition: height 0.3s ease-in-out;
+  .success {
+    position: relative;
+    width: 100px;
+    height: 130px;
+    text-align: center;
+    line-height: 130px;
+    /* background-color: #c29b9b; */
+    .top {
+      width: 100%;
+      height: 100%;
+    }
+    .bottom {
+      display: none;
+      width: 500px;
+      height: 100px;
+      background-color: #600;
+      position: absolute;
+      z-index: -199;
+      top: 130px;
+      left: 50%;
+      transform: translateX(-50%);
+      .bottom-content {
+        display: flex;
+      }
+    }
+    &:hover,
+    .bottom {
+      .bottom {
+        display: block;
+      }
+    }
+  }
 
+  .success:hover {
+  }
   .contact {
     display: flex;
     justify-content: center;

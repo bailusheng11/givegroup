@@ -8,16 +8,19 @@
         <source src="../assets/video/video.mp4" type="video/mp4" />
       </video>
     </div>
-    <div v-show="isAside" class="aside">
+    <!-- ----------------------------------------------------- -->
+    <div v-show="isAside" class="aside animate__animated animate__slideInRight">
       <div class="business">业务咨询</div>
-      <div class="phone">
+      <div>400</div>
+      <span class="phone">
         <span class="left">400电话</span>
-        <span class="right"></span>
-      </div>
+        <span class="right">12314562</span>
+      </span>
       <div class="online">在线咨询</div>
       <div class="wx">微信咨询</div>
       <div @click="totop" class="to-top">^</div>
     </div>
+    <!-- ----------------------------------------------------- -->
     <div class="index-main">
       <div class="index-page01">
         <div class="top" :class="isShow1 ? 'animate__animated animate__fadeInUp' : ''">
@@ -32,10 +35,51 @@
       <div class="index-page02">
         <div class="title" :class="isShow2 ? 'animate__animated animate__fadeInUp' : ''">案例展示 /</div>
         <div class="case-list">
-          <template v-for="n in 12" :key="n">
+          <template v-for="n in 3" :key="n">
             <div class="case-item" :class="isShow3 ? `animate__animated animate__fadeInUp animate__delay-${n}s` : ''">
               <div class="gif-box">
                 <img src="../assets/img/hik.gif" alt="" />
+              </div>
+              <div class="info-box">
+                <div>Website design</div>
+                <div>杭州海康</div>
+                <div>500强</div>
+              </div>
+            </div>
+          </template>
+          <template v-for="n in 3" :key="n">
+            <div class="case-item" :class="isShow3 ? `animate__animated animate__fadeInUp animate__delay-${n}s` : ''">
+              <div class="gif-box">
+                <img src="../assets/img/hik.gif" alt="" />
+              </div>
+              <div class="info-box">
+                <div>Website design</div>
+                <div>杭州海康</div>
+                <div>500强</div>
+              </div>
+            </div>
+          </template>
+          <template v-for="n in 3" :key="n">
+            <div class="case-item" :class="isShow3 ? `animate__animated animate__fadeInUp animate__delay-${n}s` : ''">
+              <div class="gif-box">
+                <img src="../assets/img/hik.gif" alt="" />
+              </div>
+              <div class="info-box">
+                <div>Website design</div>
+                <div>杭州海康</div>
+                <div>500强</div>
+              </div>
+            </div>
+          </template>
+          <template v-for="n in 3" :key="n">
+            <div class="case-item" :class="isShow3 ? `animate__animated animate__fadeInUp animate__delay-${n}s` : ''">
+              <div class="gif-box">
+                <img src="../assets/img/hik.gif" alt="" />
+              </div>
+              <div class="info-box">
+                <div>Website design</div>
+                <div>杭州海康</div>
+                <div>500强</div>
               </div>
             </div>
           </template>
@@ -87,7 +131,9 @@
             </div>
             <div class="tags">人工 · 智能 · 添加 · 网站 · 平台</div>
           </div>
-          <div class="arrow"></div>
+          <div class="arrow">
+            <img src="../assets/img/right.svg" style="display: block; width: 48px; height: 48px" />
+          </div>
         </div>
         <div class="item">
           <div class="left">
@@ -298,17 +344,14 @@ a {
     width: 150px;
     align-items: right;
     justify-content: flex-end;
+    text-align: right;
     div {
-      z-index: 999;
       background: #ed263b;
-      display: block;
       text-align: center;
-      /* font-size: 24px; */
       font-size: 12px;
       color: #fff;
       margin-bottom: 1px;
       text-align: center;
-      transition: transform 0.4s;
       width: 80px;
       height: 66px;
       border-radius: 5px 0 0 5px;
@@ -318,6 +361,40 @@ a {
     div:hover {
       width: 100px;
       transition: width 0.3s ease-in-out;
+    }
+    div:last-child {
+      color: #000;
+      background-color: #ddd;
+    }
+    .phone {
+      position: absolute;
+      top: 67px;
+      right: 0;
+      z-index: 99;
+      background: #ed263b;
+      text-align: left;
+      font-size: 12px;
+      color: #fff;
+      margin-bottom: 1px;
+      text-align: left;
+      width: 240px;
+      height: 66px;
+      border-radius: 5px 0 0 5px;
+      box-sizing: border-box;
+      transform: translateX(67%);
+
+      .left {
+        display: inline-block;
+        width: 80px;
+        height: 66px;
+        border-right: 1px solid #000;
+        padding: 10px 10px 10px 0;
+        box-sizing: border-box;
+      }
+    }
+    .phone:hover {
+      transform: translateX(0);
+      transition: transform 0.5s ease-in-out;
     }
     /*  */
   }
@@ -355,10 +432,58 @@ a {
         flex-flow: row wrap;
         position: relative;
         .case-item {
-          img {
-            width: 475px;
-            height: 398px;
-            vertical-align: top;
+          overflow: hidden;
+
+          .gif-box {
+            img {
+              width: 475px;
+              height: 398px;
+              vertical-align: top;
+            }
+          }
+
+          .info-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background-color: #ed263b;
+          }
+          &:hover {
+            .gif-box {
+              transform: scale(1.1);
+
+              transition: scale 0.3;
+            }
+            .info-box {
+              z-index: 1;
+              -webkit-animation: fadeinout 1s linear forwards;
+              animation: fadeinout 1s linear forwards;
+            }
+          }
+          @-webkit-keyframes fadeinout {
+            0% {
+              opacity: 0;
+            }
+            50% {
+              opacity: 0.5;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          @keyframes fadeinout {
+            0% {
+              opacity: 0;
+            }
+            50% {
+              opacity: 0.5;
+            }
+            100% {
+              opacity: 1;
+            }
           }
         }
 
@@ -372,10 +497,36 @@ a {
           overflow: hidden;
           position: relative;
           z-index: 1;
-          transition: color 0.3s, border-color 0.3s;
           cursor: pointer;
           justify-content: center;
           border: 1px solid #ed263b;
+        }
+        .more::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 100%;
+          z-index: -1;
+          margin: -15px 0 0 1px;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: #ed263b;
+        }
+        .more:hover {
+          color: #fff;
+          transition: color 0.3s ease-in-out;
+          &::before {
+            content: "";
+            margin: -15px 0 0 1px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #ed263b;
+            transform: scale(20);
+            transition: transform 0.3s ease-in-out;
+            transition-timing-function: cubic-bezier(0.7, 0, 0.9, 1);
+          }
         }
       }
     }
@@ -469,6 +620,24 @@ a {
             margin-bottom: 24px;
             color: #666;
           }
+        }
+      }
+      .item:hover {
+        .arrow {
+          animation-name: rightarrow;
+          animation-direction: alternate;
+          animation-timing-function: linear;
+          animation-delay: 0;
+          animation-duration: 0.5s;
+          animation-iteration-count: infinite;
+        }
+      }
+      @keyframes rightarrow {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
         }
       }
     }
